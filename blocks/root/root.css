@@ -1,0 +1,10 @@
+.root {
+  background-color: #000;
+  margin: 0 auto;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  color: #fff;
+  position: relative;
+  max-width: 882px;
+  padding: 0 19px;
+  box-sizing: border-box;
+}
