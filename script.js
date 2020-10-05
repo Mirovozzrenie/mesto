@@ -9,16 +9,10 @@ let formElement = document.querySelector('.popup__edit-form');
 let nameInput = document.querySelector('.popup__user-name');
 let jobInput = document.querySelector('.popup__user-status');
 
-//добавим прослушку
-profileEditButton.addEventListener('click', popupActivation);
-popupCancelIcon.addEventListener('click', popupDeactivation);
-formElement.addEventListener('submit', formSubmitHandler);
-
-
 //функции видимости блока popup
 function popupActivation() {
-  nameInput.setAttribute('value', profileUserName.textContent);
-  jobInput.setAttribute('value', profileUserStatus.textContent);
+  nameInput.value = profileUserName.textContent;
+  jobInput.value = profileUserStatus.textContent;
   popup.classList.add('popup_active');
 }
 
@@ -32,3 +26,9 @@ function formSubmitHandler(event) {
   profileUserStatus.textContent = jobInput.value;
   popupDeactivation();
 }
+
+//добавим прослушку
+profileEditButton.addEventListener('click', popupActivation);
+popupCancelIcon.addEventListener('click', popupDeactivation);
+formElement.addEventListener('submit', formSubmitHandler);
+
