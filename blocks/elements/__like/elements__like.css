@@ -5,5 +5,8 @@
   background-repeat: no-repeat;
   background-position: center;
   border: none;
-  background-color: #fff;
+  background-color: transparent;
+}
+.elements__like:hover {
+  cursor: pointer;
 }

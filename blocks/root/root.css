@@ -5,6 +5,11 @@
   color: #fff;
   position: relative;
   max-width: 882px;
-  padding: 0 19px;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 700px) {
+  .root{
+    padding: 0 19px;
+  }
 }

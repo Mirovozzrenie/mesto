@@ -1,8 +1,11 @@
 .popup__input-field{
     padding: 0;
-    height: 40px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 14px;
     line-height: 40px;
+    margin: 0 0 17px;
+}
+.popup__input-field:last-of-type {
+ margin: 0 0 48px;
 }

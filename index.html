@@ -21,11 +21,11 @@
       <div class="profile__info">
         <div class="profile__title">
           <h1 class="profile__user-name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button"></button>
+          <button class="profile__edit-button" type="button"></button>
         </div>
         <p class="profile__user-status">Исследователь океана</p>
       </div>
-      <button class="profile__add-button"></button>
+      <button class="profile__add-button" type="button"></button>
     </section>
 
     <section class="elements">
@@ -35,7 +35,7 @@
 " class="elements__picture">
         <div class="elements__place-panel">
           <h2 class="elements__name">Карачаевск</h2>
-          <button class="elements__like"></button>
+          <button class="elements__like" type="button"></button>
         </div>
       </div>
 
@@ -43,7 +43,7 @@
         <img src="./images/elements/2.jpg" alt="Закат" class="elements__picture">
         <div class="elements__place-panel">
           <h2 class="elements__name">Гора Эльбрус</h2>
-          <button class="elements__like"></button>
+          <button class="elements__like" type="button"></button>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
         <img src="./images/elements/3.jpg" alt="Домбай" class="elements__picture">
         <div class="elements__place-panel">
           <h2 class="elements__name">Домбай</h2>
-          <button class="elements__like"></button>
+          <button class="elements__like" type="button"></button>
         </div>
       </div>
 
@@ -59,7 +59,7 @@
         <img src="./images/elements/4.jpg" alt="Закат" class="elements__picture">
         <div class="elements__place-panel">
           <h2 class="elements__name">Гора Эльбрус</h2>
-          <button class="elements__like"></button>
+          <button class="elements__like" type="button"></button>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
         <img src="./images/elements/5.jpg" alt="Домбай" class="elements__picture">
         <div class="elements__place-panel">
           <h2 class="elements__name">Домбай</h2>
-          <button class="elements__like"></button>
+          <button class="elements__like" type="button"></button>
         </div>
       </div>
 
@@ -76,7 +76,7 @@
 " class="elements__picture">
         <div class="elements__place-panel">
           <h2 class="elements__name">Карачаево-Ч...</h2>
-          <button class="elements__like"></button>
+          <button class="elements__like" type="button"></button>
         </div>
       </div>
 
@@ -92,11 +92,11 @@
   <div class="popup">
 
     <div class="popup__container">
-      <button class="popup__cancel-icon"></button>
+      <button class="popup__cancel-icon" type="button"></button>
       <form class="popup__edit-form">
         <h2 class="popup__action-name">Редактировать профиль</h2>
-        <input class="popup__user-name popup__input-field" type="text" placeholder="Фамилия" required>
-        <input class="popup__user-status popup__input-field" type="text" placeholder="Статус" required>
+        <input class="popup__user-name popup__input-field" type="text" placeholder="Фамилия" required name="user-name">
+        <input class="popup__user-status popup__input-field" type="text" placeholder="Статус" required name="user-status">
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -104,7 +104,7 @@
 
 
   <!--  скрипт -->
-  <script src="script.js"></script>
+  <script src="./JS/script.js"></script>
 </body>
 
 </html>
