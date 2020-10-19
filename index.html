@@ -6,6 +6,7 @@
   <title>mesto</title>
   <link rel="stylesheet" href="./pages/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./JS/script.js" defer></script>
 </head>
 
 <body class="root">
@@ -29,6 +30,7 @@
     </section>
 
     <section class="elements">
+<!--
 
       <div class="elements__card">
         <img src="./images/elements/1.jpg" alt="Сентинский храм
@@ -79,6 +81,7 @@
           <button class="elements__like" type="button"></button>
         </div>
       </div>
+-->
 
     </section>
 
@@ -101,10 +104,17 @@
       </form>
     </div>
   </div>
-
-
+  <!-- template -->
+<template class="card__template">     
+        <div class="elements__card">
+        <img src="" alt="" class="elements__picture">
+        <div class="elements__place-panel">
+          <h2 class="elements__name"></h2>
+          <button class="elements__like" type="button"></button>
+        </div>
+      </div>
+      </template>
   <!--  скрипт -->
-  <script src="./JS/script.js"></script>
 </body>
 
 </html>

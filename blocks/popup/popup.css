@@ -4,8 +4,6 @@
 @import url('__action-name/popup__action-name.css');
 @import url('__input-field/popup__input-field.css');
 @import url('__save-button/popup__save-button.css');
-@import url('__user-name/popup__user-name.css');
-@import url('__user-status/popup__user-status.css');
 
 
 .popup {
