@@ -44,6 +44,9 @@ const formElement = document.querySelector('.popup__edit-form');
 const nameInput = document.querySelector('.popup__user-name');
 const jobInput = document.querySelector('.popup__user-status');
 const elements = document.querySelector('.elements');
+const placeName = document.querySelector('.popup__place-name');
+const pictureLink = document.querySelector('.popup__picture-link');
+
 
 
 //загатовка карточки для отрисовки 
@@ -52,47 +55,62 @@ const cardTemplate = document.querySelector('.card__template');
 //функция добавления карточек 
 const renderElements = () => {
   const items = initialCards.map(element => {
-    return `<div class="elements__card">
-        <img src="${element.link}" alt="" class="elements__picture">
-        <div class="elements__place-panel">
-          <h2 class="elements__name">${element.name}</h2>
-          <button class="elements__like" type="button"></button>
-        </div>
-      </div>`
+    return getCard(element);
   }).join('');
 
   elements.insertAdjacentHTML('afterbegin', items);
 };
+
+//добавление карточки через popup
+const getCard = (data) => {
+  return `<div class="elements__card">
+        <img src="${data.link}" alt="" class="elements__picture">
+        <div class="elements__place-panel">
+          <h2 class="elements__name">${data.name}</h2>
+          <button class="elements__like" type="button"></button>
+        </div>
+      </div>  `
+}
 renderElements();
 
-//включение/выключение popup
-function popupToggle(arg) {
-  arg.classList.toggle('popup_active');
-}
-//отправка формы 
-function formSubmitHandler(event) {
-  event.preventDefault();
-  profileUserName.textContent = nameInput.value;
-  profileUserStatus.textContent = jobInput.value;
-  popupToggle(popup);
-}
+const bindHandlers = () => {
+    popupCardEditorSubmit.addEventListener('submit', () => {
+        const item = getCard({
+          name: placeName.value,
+          link: pictureLink.value
+        })
+        elements.insertAdjacentHTML('afterbegin', items);
+    })
+    };
+bindHandlers();
+    //включение/выключение popup
+    function popupToggle(arg) {
+      arg.classList.toggle('popup_active');
+    }
+    //отправка формы 
+    function formSubmitHandler(event) {
+      event.preventDefault();
+      profileUserName.textContent = nameInput.value;
+      profileUserStatus.textContent = jobInput.value;
+      popupToggle(popup);
+    }
 
 
-//добавим прослушку в профиль 
-profileEditButton.addEventListener('click', function () {
-  nameInput.value = profileUserName.textContent;
-  jobInput.value = profileUserStatus.textContent;
-  popupToggle(popup);
-});
-popupCancelIcon.addEventListener('click', function () {
-  popupToggle(popup);
-});
-formElement.addEventListener('submit', formSubmitHandler);
+    //добавим прослушку в профиль 
+    profileEditButton.addEventListener('click', function () {
+      nameInput.value = profileUserName.textContent;
+      jobInput.value = profileUserStatus.textContent;
+      popupToggle(popup);
+    });
+    popupCancelIcon.addEventListener('click', function () {
+      popupToggle(popup);
+    });
+    formElement.addEventListener('submit', formSubmitHandler);
 
-//окно добавления карточек 
-profileAddButton.addEventListener('click', function () {
-  popupToggle(popupCardEditor);
-});
-popupCardEditorCancelIcon.addEventListener('click', function () {
-  popupToggle(popupCardEditor);
-})
+    //окно добавления карточек 
+    profileAddButton.addEventListener('click', function () {
+      popupToggle(popupCardEditor);
+    });
+    popupCardEditorCancelIcon.addEventListener('click', function () {
+      popupToggle(popupCardEditor);
+    })
