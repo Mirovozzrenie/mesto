@@ -3,7 +3,6 @@
 @import url('./__place-panel/elements__place-panel.css');
 @import url('./__like/elements__like.css');
 @import url('./__name/elements__name.css');
-
 .elements {
   display: grid;
   grid-template-columns: repeat(3, 282px);

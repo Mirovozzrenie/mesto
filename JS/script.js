@@ -36,6 +36,10 @@ const popupCardEditor = document.querySelector('.popup__cards-editor');
 const popupCardEditorCancelIcon = document.querySelector('.popup__cancel-cards');
 const popupCardEditorSubmit = document.querySelector('.popup__save-cards');
 
+//кнопки на карточке 
+
+//const cardremove = 
+
 //найдем в DOM осн элементы 
 const popup = document.querySelector('.popup');
 const profileUserName = document.querySelector('.profile__user-name');
@@ -46,6 +50,7 @@ const jobInput = document.querySelector('.popup__user-status');
 const elements = document.querySelector('.elements');
 const placeName = document.querySelector('.popup__place-name');
 const pictureLink = document.querySelector('.popup__picture-link');
+const newCardForm = document.querySelector('.popup__new-card-picture');
 
 
 
@@ -54,32 +59,32 @@ const cardTemplate = document.querySelector('.card__template');
 
 //функция добавления карточек 
 const renderElements = () => {
-  const items = initialCards.map(element => {
-    return getCard(element);
-  }).join('');
-
-  elements.insertAdjacentHTML('afterbegin', items);
+  const items = initialCards.map(element => getCard(element));
+  elements.append(...items);
 };
+const favoriteCard = (event) => {event.target.classList.toggle('elements__like_condition_on')}
 
 //добавление карточки через popup
 const getCard = (data) => {
-  return `<div class="elements__card">
-        <img src="${data.link}" alt="" class="elements__picture">
-        <div class="elements__place-panel">
-          <h2 class="elements__name">${data.name}</h2>
-          <button class="elements__like" type="button"></button>
-        </div>
-      </div>  `
+  const card = cardTemplate.content.cloneNode(true);
+  card.querySelector('.elements__name').innerHTML = data.name;
+  card.querySelector('.elements__picture').setAttribute('src', data.link);
+  
+  const cardLike = card.querySelector('.elements__like');
+  cardLike.addEventListener('click', favoriteCard); 
+  
+  return card;
 }
 renderElements();
 
-const bindHandlers = () => {
-    popupCardEditorSubmit.addEventListener('submit', () => {
+function bindHandlers() {
+        newCardForm.addEventListener('submit', () => {
+             event.preventDefault();
         const item = getCard({
           name: placeName.value,
           link: pictureLink.value
         })
-        elements.insertAdjacentHTML('afterbegin', items);
+     elements.prepend(item);
     })
     };
 bindHandlers();
@@ -91,7 +96,7 @@ bindHandlers();
     function formSubmitHandler(event) {
       event.preventDefault();
       profileUserName.textContent = nameInput.value;
-      profileUserStatus.textContent = jobInput.value;
+      profileUserStatus.textContent = jobIubmitnput.value;
       popupToggle(popup);
     }
 
