@@ -63,7 +63,7 @@ const renderElements = () => {
   elements.append(...items);
 };
 const favoriteCard = (event) => {event.target.classList.toggle('elements__like_condition_on')}
-
+const removeCard = (event) => {event.target.closest('.elements__card').remove();}
 //добавление карточки через popup
 const getCard = (data) => {
   const card = cardTemplate.content.cloneNode(true);
@@ -72,6 +72,8 @@ const getCard = (data) => {
   
   const cardLike = card.querySelector('.elements__like');
   cardLike.addEventListener('click', favoriteCard); 
+  const cardRemove = card.querySelector('.elements__remove-btn');
+  cardRemove.addEventListener('click', removeCard);
   
   return card;
 }
