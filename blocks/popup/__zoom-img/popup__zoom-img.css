@@ -8,5 +8,6 @@
   .popup__zoom-img{
     max-height: 299px;
     max-width: 240px;
+    margin-right: 30px;
   }
 }

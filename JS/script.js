@@ -82,7 +82,7 @@ function popup__zoom(event) {
   console.log(pictureCaption);
   console.log(pictureSrc);
   popupToggle(popupZoom);
-}
+};
 
 //добавление карточки через popup
 const getCard = data => {
@@ -100,8 +100,6 @@ const getCard = data => {
 
   return card;
 };
-renderElements();
-
 function bindHandlers() {
   newCardForm.addEventListener("submit", () => {
     event.preventDefault();
@@ -111,8 +109,8 @@ function bindHandlers() {
     });
     elements.prepend(item);
   });
-}
-bindHandlers();
+};
+
 //включение/выключение popup
 function popupToggle(arg) {
   arg.classList.toggle("popup_active");
@@ -124,6 +122,8 @@ function formSubmitHandler(event) {
   profileUserStatus.textContent = jobIubmitnput.value;
   popupToggle(popup);
 }
+renderElements();
+bindHandlers();
 
 //добавим прослушку в профиль
 profileEditButton.addEventListener("click", function() {
