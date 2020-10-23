@@ -79,8 +79,6 @@ function popup__zoom(event) {
   const pictureCaption = event.target.nextElementSibling.querySelector('.elements__name').textContent;
   popupZoomPicture.setAttribute("src", pictureSrc);
   popupZoomCaption.textContent = pictureCaption;
-  console.log(pictureCaption);
-  console.log(pictureSrc);
   popupToggle(popupZoom);
 };
 
@@ -89,17 +87,15 @@ const getCard = data => {
   const card = cardTemplate.content.cloneNode(true);
   card.querySelector(".elements__name").innerHTML = data.name;
   card.querySelector(".elements__picture").setAttribute("src", data.link);
-
   const cardLike = card.querySelector(".elements__like");
   cardLike.addEventListener("click", favoriteCard);
   const cardRemove = card.querySelector(".elements__remove-btn");
   cardRemove.addEventListener("click", removeCard);
-
   const cardPicture = card.querySelector(".elements__picture");
   cardPicture.addEventListener("click", popup__zoom);
-
   return card;
 };
+
 function bindHandlers() {
   newCardForm.addEventListener("submit", () => {
     event.preventDefault();
@@ -108,6 +104,7 @@ function bindHandlers() {
       link: pictureLink.value
     });
     elements.prepend(item);
+    popupToggle(popupCardEditor);
   });
 };
 
