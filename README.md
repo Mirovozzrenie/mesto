@@ -11,9 +11,9 @@
 
 * На странице присутствуют 6 карточек с фотографиями. Снимки и названия мест вы можете выбрать сами.
 
-[Моя работа] (https://mirovozzrenie.github.io/mesto/index.html) 
+[Моя работа](https://mirovozzrenie.github.io/mesto/index.html) 
 
-##В данной работе использовались:
+## В данной работе использовались:
  *  HTML
  *  CSS  
  *  Grid & flex
