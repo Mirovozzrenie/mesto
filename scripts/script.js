@@ -34,18 +34,16 @@ const initialCards = [
 
 //Основные кнопки профиля
 const profileEditButton = document.querySelector(".profile__edit-button");
-const popupCancelIcon = document.querySelector(".popup__cancel-icon");
+const popupCancelIcon = document.querySelector(".popup__cancel-profile");
 const profileAddButton = document.querySelector(".profile__add-button");
 
 //Основные кнопки добавления карточки
-const popupCardEditor = document.querySelector(".popup__cards-editor");
-const popupCardEditorCancelIcon = document.querySelector(
-  ".popup__cancel-cards"
-);
+const popupCardEditor = document.querySelector(".popup_cards-editor");
+const popupCardEditorCancelIcon = document.querySelector(".popup__cancel-cards");
 const popupCardEditorSubmit = document.querySelector(".popup__save-cards");
 
 //найдем в DOM осн элементы
-const popup = document.querySelector(".popup");
+const popupProfileEditor = document.querySelector(".popup_profile-editor");
 const profileUserName = document.querySelector(".profile__user-name");
 const profileUserStatus = document.querySelector(".profile__user-status");
 const formElement = document.querySelector(".popup__edit-form");
@@ -55,7 +53,7 @@ const elements = document.querySelector(".elements");
 const placeName = document.querySelector(".popup__place-name");
 const pictureLink = document.querySelector(".popup__picture-link");
 const newCardForm = document.querySelector(".popup__new-card-picture");
-const popupZoom = document.querySelector(".popup__zoom");
+const popupZoom = document.querySelector(".popup_zoom");
 const popupZoomCancel = document.querySelector(".popup__zoom-cancel");
 const popupZoomPicture = document.querySelector(".popup__zoom-img");
 const popupZoomCaption = document.querySelector(".popup__zoom-caption");
@@ -74,7 +72,7 @@ const removeCard = event => {
   event.target.closest(".elements__card").remove();
 };
 
-function popup__zoom(event) {
+function popupZoomSwitch(event) {
   const pictureSrc = event.target.getAttribute("src");
   const pictureCaption = event.target.nextElementSibling.querySelector('.elements__name').textContent;
   popupZoomPicture.setAttribute("src", pictureSrc);
@@ -92,18 +90,20 @@ const getCard = data => {
   const cardRemove = card.querySelector(".elements__remove-btn");
   cardRemove.addEventListener("click", removeCard);
   const cardPicture = card.querySelector(".elements__picture");
-  cardPicture.addEventListener("click", popup__zoom);
+  cardPicture.addEventListener("click", popupZoomSwitch);
   return card;
 };
 
 function bindHandlers() {
-  newCardForm.addEventListener("submit", () => {
+  newCardForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const item = getCard({
       name: placeName.value,
       link: pictureLink.value
     });
     elements.prepend(item);
+    placeName.value = '';
+    pictureLink.value = '';
     popupToggle(popupCardEditor);
   });
 };
@@ -116,8 +116,8 @@ function popupToggle(arg) {
 function formSubmitHandler(event) {
   event.preventDefault();
   profileUserName.textContent = nameInput.value;
-  profileUserStatus.textContent = jobIubmitnput.value;
-  popupToggle(popup);
+  profileUserStatus.textContent = jobInput.value;
+  popupToggle(popupProfileEditor);
 }
 renderElements();
 bindHandlers();
@@ -126,12 +126,13 @@ bindHandlers();
 profileEditButton.addEventListener("click", function() {
   nameInput.value = profileUserName.textContent;
   jobInput.value = profileUserStatus.textContent;
-  popupToggle(popup);
+  popupToggle(popupProfileEditor);
 });
 popupCancelIcon.addEventListener("click", function() {
-  popupToggle(popup);
+  popupToggle(popupProfileEditor);
 });
 formElement.addEventListener("submit", formSubmitHandler);
+
 
 //окно добавления карточек
 profileAddButton.addEventListener("click", function() {
