@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./pages/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="./scripts/script.js" defer></script>
+  <script src="./scripts/validation.js" defer></script>
 </head>
 
 <body class="root">
@@ -43,8 +44,9 @@
       <button class="popup__cancel-icon popup__cancel-profile" type="button"></button>
       <form class="popup__edit-form" name="profile-edit-form">
         <h2 class="popup__action-name">Редактировать профиль</h2>
-        <input class="popup__user-name popup__input-field" type="text" placeholder="Фамилия" required name="user-name">
-        <input class="popup__user-status popup__input-field" type="text" placeholder="Статус" required name="user-status">
+        <input class="popup__user-name popup__input-field" type="text" placeholder="Фамилия" required name="user-name"autocomplete="off" minlength="2" maxlength="40" id="user-name">
+        <span></span>
+        <input class="popup__user-status popup__input-field" type="text" placeholder="Статус" required name="user-status" autocomplete="off" minlength="2" maxlength="200" id="user-status">
         <button class="popup__save-button popup__save-profile" type="submit">Сохранить</button>
       </form>
     </div>
@@ -56,8 +58,10 @@
       <button class="popup__cancel-icon popup__cancel-cards" type="button"></button>
       <form class="popup__edit-form popup__new-card-picture" name="card-edit-form">
         <h2 class="popup__action-name">Новое место</h2>
-        <input class="popup__place-name popup__input-field" type="text" placeholder="Название" required name="place-name">
-        <input class="popup__picture-link popup__input-field" type="text" placeholder="Ссылка на картинку" required name="picture-link">
+        <input class="popup__place-name popup__input-field" type="text" placeholder="Название" required name="place-name" autocomplete="off" minlength="2" maxlength="30" id="name-card">
+        <span id="name-card-error" class="popup__error"></span>
+        <input class="popup__picture-link popup__input-field" type="url" placeholder="Ссылка на картинку" required name="picture-link" autocomplete="off" id="link-place">
+        <span id="link-place-error" class="popup__error"></span>
         <button class="popup__save-button popup__save-cards" type="submit">Сохранить</button>
       </form>
     </div>
