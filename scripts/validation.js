@@ -3,6 +3,7 @@ const newPlaceName = newPlaceForm.querySelector('.popup__place-name');
 const newPlaceLink = newPlaceForm.querySelector('.popup__picture-link');
 const newProfileInfo = document.querySelector('.popup__new-profile-info')
 
+
 function showError(formElements, input) {
   const errorElement = formElements.querySelector(`#${input.id}-error`);
   errorElement.textContent = input.validationMessage;
