@@ -144,14 +144,12 @@ profileAddButton.addEventListener("click", function () {
 popupCardEditorCancelIcon.addEventListener("click", function() {
   popupToggle(popupCardEditor);
 });
-
 popupZoomCancel.addEventListener("click", function() {
   popupToggle(popupZoom);
 });
 
 document.querySelectorAll('.popup').forEach((popup) => {
   popup.addEventListener('click', (event) => {
-    event.preventDefault();
     if (event.target.classList.contains('popup')) {
       popupToggle(event.target);
     };
