@@ -77,12 +77,10 @@ let detector = false;
 function removePopupListener (e){
   document.removeEventListener('keydown', popupCloseEsc);
   detector = false;
-  console.log("detector = " + detector)
 }
 function addPopupListener (e){
   document.addEventListener('keydown', popupCloseEsc);
   detector = true;
-  console.log("detector = " + detector)
 }
 function popupCloseEsc(event){
   const activePopup = document.querySelector('.popup.popup_active');
@@ -134,10 +132,8 @@ function popupToggle(arg) {
   arg.classList.toggle("popup_active");
   if (detector === true) {
     removePopupListener();
-    console.log("1")
   } else{
     addPopupListener()
-    console.log("2")
   }
 }
 //отправка формы
