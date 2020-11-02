@@ -73,7 +73,7 @@ const favoriteCard = event => {
 const removeCard = event => {
   event.target.closest(".elements__card").remove();
 };
-
+let detector = true;
 function popupZoomSwitch(event) {
   const pictureSrc = event.target.getAttribute("src");
   const pictureCaption = event.target.nextElementSibling.querySelector(
@@ -115,6 +115,11 @@ function bindHandlers() {
 //включение/выключение popup
 function popupToggle(arg) {
   arg.classList.toggle("popup_active");
+  if (detector === true) {
+    removePopupListener();
+  } else{
+    addPopupListener()
+  }
 }
 //отправка формы
 function formSubmitHandler(event) {
@@ -155,10 +160,23 @@ document.querySelectorAll('.popup').forEach((popup) => {
     };
   });
 });
-document.addEventListener('keydown', (event) => {
-  // event.preventDefault();
+//document.addEventListener('keydown', (event) => {
+//  const activePopup = document.querySelector('.popup.popup_active');
+//  if (activePopup && event.key === 'Escape'){
+//    popupToggle(activePopup);
+//  }
+//});
+function removePopupListener (e){
+  document.removeEventListener('keydown', popupCloseEsc);
+  detector = false;
+}
+function addPopupListener (e){
+  document.addEventListener('keydown', popupCloseEsc);
+  detector = true;
+}
+function popupCloseEsc(event){
   const activePopup = document.querySelector('.popup.popup_active');
   if (activePopup && event.key === 'Escape'){
     popupToggle(activePopup);
   }
-})
+}
