@@ -28,8 +28,6 @@ const popupZoom = document.querySelector(".popup_zoom");
 const popupZoomCancel = document.querySelector(".popup__zoom-cancel");
 const popupZoomPicture = document.querySelector(".popup__zoom-img");
 const popupZoomCaption = document.querySelector(".popup__zoom-caption");
-//загатовка карточки для отрисовки
-//const cardTemplate = document.querySelector(".card__template");
 
 //функция добавления карточек
 const renderElements = () => {
@@ -147,3 +145,4 @@ document.querySelectorAll('.popup').forEach((popup) => {
     };
   });
 });
+export {popupToggle, popupZoom};
