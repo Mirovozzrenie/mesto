@@ -1,36 +1,5 @@
-//основной массив карточек
-const initialCards = [
-  {
-    name: "Архыз",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
-  },
-  {
-    name: "Челябинская область",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg"
-  },
-  {
-    name: "Иваново",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg"
-  },
-  {
-    name: "Камчатка",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg"
-  },
-  {
-    name: "Холмогорский район",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg"
-  },
-  {
-    name: "Байкал",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg"
-  }
-];
+import {initialCards} from './data.js';
+import {getCard} from './card.js';
 
 //Основные кнопки профиля
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -60,7 +29,7 @@ const popupZoomCancel = document.querySelector(".popup__zoom-cancel");
 const popupZoomPicture = document.querySelector(".popup__zoom-img");
 const popupZoomCaption = document.querySelector(".popup__zoom-caption");
 //загатовка карточки для отрисовки
-const cardTemplate = document.querySelector(".card__template");
+//const cardTemplate = document.querySelector(".card__template");
 
 //функция добавления карточек
 const renderElements = () => {
@@ -99,11 +68,12 @@ function popupZoomSwitch(event) {
   popupToggle(popupZoom);
 }
 
+
 //добавление карточки через popup
 const getCard = data => {
-  const card = cardTemplate.content.cloneNode(true);
-  card.querySelector(".elements__name").innerHTML = data.name;
-  card.querySelector(".elements__picture").setAttribute("src", data.link);
+  const card = cardTemplate.content.cloneNode(true);//
+  card.querySelector(".elements__name").innerHTML = data.name;//
+  card.querySelector(".elements__picture").setAttribute("src", data.link);//
   const cardLike = card.querySelector(".elements__like");
   cardLike.addEventListener("click", favoriteCard);
   const cardRemove = card.querySelector(".elements__remove-btn");
@@ -112,6 +82,8 @@ const getCard = data => {
   cardPicture.addEventListener("click", popupZoomSwitch);
   return card;
 };
+
+
 
 function bindHandlers() {
   newCardForm.addEventListener("submit", event => {
