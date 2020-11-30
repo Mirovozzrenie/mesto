@@ -1,9 +1,8 @@
-import {popupToggle, popupZoom} from './script.js';
-
-class Card {
+import {popupZoomSwitch, popupToggle} from generalFunction.js;
+export default class Card {
   constructor(data) {
-    data.name = name;
-    data.link = link;
+    this.name = data.name;
+    this.link = data.link;
   }
   
   _getTemplate() {
@@ -28,22 +27,7 @@ class Card {
       event.target.closest(".elements__card").remove();
     });
   }
-  
   cardPicture() {
-    this._element.querySelector(".elements__picture").addEventListener("click", (event) => {
-      const pictureSrc = event.target.getAttribute("src");
-      const pictureCaption = event.target.nextElementSibling.querySelector(".elements__name").textContent;
-      popupZoomPicture.setAttribute("src", pictureSrc);
-      popupZoomCaption.textContent = pictureCaption;
-      const popupZoom = this._element.querySelector(".popup_zoom");
-      popupToggle(popupZoom) { 
-      arg.classList.toggle("popup_active");
-      if (detector === true) {
-        removePopupListener();
-        } else {
-        addPopupListener()
-        }
-     }
-    });
+    this._element.querySelector(".elements__picture").addEventListener("click", popupZoomSwitch);
   }
 }

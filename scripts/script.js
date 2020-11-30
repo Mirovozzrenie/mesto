@@ -1,5 +1,7 @@
 import {initialCards} from './data.js';
-import {getCard} from './card.js';
+import getCard from './card.js';
+import {popupZoomSwitch, popupToggle} from generalFunction.js;
+
 
 //Основные кнопки профиля
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -30,21 +32,23 @@ const popupZoomPicture = document.querySelector(".popup__zoom-img");
 const popupZoomCaption = document.querySelector(".popup__zoom-caption");
 
 //функция добавления карточек
-const renderElements = () => {
-  const items = initialCards.map(element => getCard(element));
-  elements.append(...items);
-};
-const favoriteCard = event => {
-  event.target.classList.toggle("elements__like_condition_on");
-};
-const removeCard = event => {
-  event.target.closest(".elements__card").remove();
-};
+// const renderElements = () => {
+//   const items = initialCards.map(element => new getCard(element));
+//   elements.append(...items);
+// };
+// const favoriteCard = event => {
+//   event.target.classList.toggle("elements__like_condition_on");
+// };
+// const removeCard = event => {
+//   event.target.closest(".elements__card").remove();
+// };
+
 let detector = false;
 function removePopupListener (e){
   document.removeEventListener('keydown', popupCloseEsc);
   detector = false;
 }
+
 function addPopupListener (e){
   document.addEventListener('keydown', popupCloseEsc);
   detector = true;
@@ -68,18 +72,18 @@ function popupZoomSwitch(event) {
 
 
 //добавление карточки через popup
-const getCard = data => {
-  const card = cardTemplate.content.cloneNode(true);//
-  card.querySelector(".elements__name").innerHTML = data.name;//
-  card.querySelector(".elements__picture").setAttribute("src", data.link);//
-  const cardLike = card.querySelector(".elements__like");
-  cardLike.addEventListener("click", favoriteCard);
-  const cardRemove = card.querySelector(".elements__remove-btn");
-  cardRemove.addEventListener("click", removeCard);
-  const cardPicture = card.querySelector(".elements__picture");
-  cardPicture.addEventListener("click", popupZoomSwitch);
-  return card;
-};
+// const getCard = data => {
+//   const card = cardTemplate.content.cloneNode(true);//
+//   card.querySelector(".elements__name").innerHTML = data.name;//
+//   card.querySelector(".elements__picture").setAttribute("src", data.link);//
+//   const cardLike = card.querySelector(".elements__like");
+//   cardLike.addEventListener("click", favoriteCard);
+//   const cardRemove = card.querySelector(".elements__remove-btn");
+//   cardRemove.addEventListener("click", removeCard);
+//   const cardPicture = card.querySelector(".elements__picture");
+//   cardPicture.addEventListener("click", popupZoomSwitch);
+//   return card;
+// };
 
 
 
@@ -98,14 +102,14 @@ function bindHandlers() {
 }
 
 //включение/выключение popup
-function popupToggle(arg) {
-  arg.classList.toggle("popup_active");
-  if (detector === true) {
-    removePopupListener();
-  } else{
-    addPopupListener()
-  }
-}
+// function popupToggle(arg) {
+//   arg.classList.toggle("popup_active");
+//   if (detector === true) {
+//     removePopupListener();
+//   } else{
+//     addPopupListener()
+//   }
+// }
 //отправка формы
 function formSubmitHandler(event) {
   event.preventDefault();
@@ -145,4 +149,4 @@ document.querySelectorAll('.popup').forEach((popup) => {
     };
   });
 });
-export {popupToggle, popupZoom};
+new getCard(data); 
