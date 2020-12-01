@@ -1,6 +1,6 @@
 import {initialCards} from './data.js';
 import getCard from './card.js';
-import {popupZoomSwitch, popupToggle} from generalFunction.js;
+import {popupZoomSwitch, popupToggle} from './generalFunction.js';
 
 
 //Основные кнопки профиля
@@ -59,33 +59,6 @@ function popupCloseEsc(event){
     popupToggle(activePopup);
   }
 }
-
-function popupZoomSwitch(event) {
-  const pictureSrc = event.target.getAttribute("src");
-  const pictureCaption = event.target.nextElementSibling.querySelector(
-    ".elements__name"
-  ).textContent;
-  popupZoomPicture.setAttribute("src", pictureSrc);
-  popupZoomCaption.textContent = pictureCaption;
-  popupToggle(popupZoom);
-}
-
-
-//добавление карточки через popup
-// const getCard = data => {
-//   const card = cardTemplate.content.cloneNode(true);//
-//   card.querySelector(".elements__name").innerHTML = data.name;//
-//   card.querySelector(".elements__picture").setAttribute("src", data.link);//
-//   const cardLike = card.querySelector(".elements__like");
-//   cardLike.addEventListener("click", favoriteCard);
-//   const cardRemove = card.querySelector(".elements__remove-btn");
-//   cardRemove.addEventListener("click", removeCard);
-//   const cardPicture = card.querySelector(".elements__picture");
-//   cardPicture.addEventListener("click", popupZoomSwitch);
-//   return card;
-// };
-
-
 
 function bindHandlers() {
   newCardForm.addEventListener("submit", event => {
@@ -149,4 +122,4 @@ document.querySelectorAll('.popup').forEach((popup) => {
     };
   });
 });
-new getCard(data); 
+new getCard(initialCards); 

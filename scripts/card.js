@@ -1,4 +1,4 @@
-import {popupZoomSwitch, popupToggle} from generalFunction.js;
+import {popupZoomSwitch} from generalFunction.js;
 export default class Card {
   constructor(data) {
     this.name = data.name;
