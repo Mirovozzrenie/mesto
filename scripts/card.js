@@ -1,8 +1,14 @@
-import {popupZoomSwitch} from generalFunction.js;
+import {popupToggle} from './generalFunction.js';
+
+const popupZoomPicture = document.querySelector(".popup__zoom-img");
+const popupZoomCaption = document.querySelector(".popup__zoom-caption");
+
+
 export default class Card {
   constructor(data) {
     this.name = data.name;
     this.link = data.link;
+    
   }
   
   _getTemplate() {
@@ -10,24 +16,33 @@ export default class Card {
     return cardElement;
   }
   
-  generateCard() {
+  _generateCard() {
     this._element = this._getTemplate();
-    this._elemet.querySelector(".elements__name").innerHTML = this.name;
+    this._element.querySelector(".elements__name").innerHTML = this.name;
     this._element.querySelector(".elements__picture").setAttribute("src", this.link);
+    this._element.querySelector(".elements__like").addEventListener("click", this.cardLike);
+    this._element.querySelector(".elements__remove-btn").addEventListener("click", this.cardRemove);
+  return this._element;
   }
   
-  cardLike() {
-    this._element.querySelector(".elements__like").addEventListener("click",  (event) => {
+  cardLike(event) {
       event.target.classList.toggle("elements__like_condition_on");
-    });
   }
-  
-  cardRemove() {
-    this._element.querySelector(".elements__remove-btn").addEventListener("click", (event) => {
+
+  cardRemove(event) {
       event.target.closest(".elements__card").remove();
-    });
   }
-  cardPicture() {
-    this._element.querySelector(".elements__picture").addEventListener("click", popupZoomSwitch);
+  cardPicture(event) {
+    event.target.querySelector(".elements__picture").addEventListener("click", popupZoomSwitch);
+  }
+
+  popupZoomSwitch(event) {
+    const pictureSrc = event.target.getAttribute("src");
+    const pictureCaption = event.target.nextElementSibling.querySelector(
+      ".elements__name"
+    ).textContent;
+    popupZoomPicture.setAttribute("src", pictureSrc);
+    popupZoomCaption.textContent = pictureCaption;
+    popupToggle(popupZoom);
   }
 }

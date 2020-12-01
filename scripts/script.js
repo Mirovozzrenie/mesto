@@ -1,7 +1,6 @@
 import {initialCards} from './data.js';
-import getCard from './card.js';
-import {popupZoomSwitch, popupToggle} from './generalFunction.js';
-
+import Card from './card.js';
+import {popupToggle} from './generalFunction.js';
 
 //Основные кнопки профиля
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -28,20 +27,8 @@ const pictureLink = document.querySelector(".popup__picture-link");
 const newCardForm = document.querySelector(".popup__new-card-picture");
 const popupZoom = document.querySelector(".popup_zoom");
 const popupZoomCancel = document.querySelector(".popup__zoom-cancel");
-const popupZoomPicture = document.querySelector(".popup__zoom-img");
-const popupZoomCaption = document.querySelector(".popup__zoom-caption");
-
-//функция добавления карточек
-// const renderElements = () => {
-//   const items = initialCards.map(element => new getCard(element));
-//   elements.append(...items);
-// };
-// const favoriteCard = event => {
-//   event.target.classList.toggle("elements__like_condition_on");
-// };
-// const removeCard = event => {
-//   event.target.closest(".elements__card").remove();
-// };
+// const popupZoomPicture = document.querySelector(".popup__zoom-img");
+// const popupZoomCaption = document.querySelector(".popup__zoom-caption");
 
 let detector = false;
 function removePopupListener (e){
@@ -90,7 +77,6 @@ function formSubmitHandler(event) {
   profileUserStatus.textContent = jobInput.value;
   popupToggle(popupProfileEditor);
 }
-renderElements();
 bindHandlers();
 
 //добавим прослушку в профиль
@@ -122,4 +108,11 @@ document.querySelectorAll('.popup').forEach((popup) => {
     };
   });
 });
-new getCard(initialCards); 
+
+initialCards.forEach((item) => {
+  const card = new Card(item);
+  console.log(card);
+  const newCard = card._generateCard();
+  console.log(newCard);
+  elements.append(newCard);
+})
