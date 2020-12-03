@@ -1,6 +1,6 @@
 import {initialCards} from './data.js';
 import Card from './card.js';
-import {popupToggle} from './generalFunction.js';
+import {popupToggle,  addPopupListener, removePopupListener} from './generalFunction.js';
 
 //Основные кнопки профиля
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -27,19 +27,17 @@ const pictureLink = document.querySelector(".popup__picture-link");
 const newCardForm = document.querySelector(".popup__new-card-picture");
 const popupZoom = document.querySelector(".popup_zoom");
 const popupZoomCancel = document.querySelector(".popup__zoom-cancel");
-// const popupZoomPicture = document.querySelector(".popup__zoom-img");
-// const popupZoomCaption = document.querySelector(".popup__zoom-caption");
 
-let detector = false;
-function removePopupListener (e){
-  document.removeEventListener('keydown', popupCloseEsc);
-  detector = false;
-}
+//let detector = false;
+// function removePopupListener (){
+//   document.removeEventListener('keydown', popupCloseEsc);
+//   detector = false;
+// }
 
-function addPopupListener (e){
-  document.addEventListener('keydown', popupCloseEsc);
-  detector = true;
-}
+// function addPopupListener (){
+//   document.addEventListener('keydown', popupCloseEsc);
+//   detector = true;
+// }
 function popupCloseEsc(event){
   const activePopup = document.querySelector('.popup.popup_active');
   if (activePopup && event.key === 'Escape'){
@@ -50,26 +48,20 @@ function popupCloseEsc(event){
 function bindHandlers() {
   newCardForm.addEventListener("submit", event => {
     event.preventDefault();
-    const item = getCard({
+    const item = {
       name: placeName.value,
       link: pictureLink.value
-    });
-    elements.prepend(item);
+    };
+    const card = new Card(item);
+   const newCard = card._generateCard();
+    elements.preend(newCard);
     placeName.value = "";
     pictureLink.value = "";
     popupToggle(popupCardEditor);
   });
 }
 
-//включение/выключение popup
-// function popupToggle(arg) {
-//   arg.classList.toggle("popup_active");
-//   if (detector === true) {
-//     removePopupListener();
-//   } else{
-//     addPopupListener()
-//   }
-// }
+
 //отправка формы
 function formSubmitHandler(event) {
   event.preventDefault();
@@ -77,7 +69,8 @@ function formSubmitHandler(event) {
   profileUserStatus.textContent = jobInput.value;
   popupToggle(popupProfileEditor);
 }
-bindHandlers();
+//
+//bindHandlers();
 
 //добавим прослушку в профиль
 profileEditButton.addEventListener("click", function () {
@@ -111,8 +104,6 @@ document.querySelectorAll('.popup').forEach((popup) => {
 
 initialCards.forEach((item) => {
   const card = new Card(item);
-  console.log(card);
   const newCard = card._generateCard();
-  console.log(newCard);
   elements.append(newCard);
 })

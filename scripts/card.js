@@ -2,6 +2,7 @@ import {popupToggle} from './generalFunction.js';
 
 const popupZoomPicture = document.querySelector(".popup__zoom-img");
 const popupZoomCaption = document.querySelector(".popup__zoom-caption");
+const popupZoom = document.querySelector(".popup_zoom");
 
 
 export default class Card {
@@ -22,7 +23,8 @@ export default class Card {
     this._element.querySelector(".elements__picture").setAttribute("src", this.link);
     this._element.querySelector(".elements__like").addEventListener("click", this.cardLike);
     this._element.querySelector(".elements__remove-btn").addEventListener("click", this.cardRemove);
-  return this._element;
+    this._element.querySelector(".elements__picture").addEventListener("click", this.popupZoomSwitch);
+    return this._element;
   }
   
   cardLike(event) {
@@ -32,15 +34,13 @@ export default class Card {
   cardRemove(event) {
       event.target.closest(".elements__card").remove();
   }
-  cardPicture(event) {
-    event.target.querySelector(".elements__picture").addEventListener("click", popupZoomSwitch);
-  }
+  // cardPicture(event) {
+  //   event.target.querySelector(".elements__picture").addEventListener("click", popupZoomSwitch);
+  // }
 
   popupZoomSwitch(event) {
     const pictureSrc = event.target.getAttribute("src");
-    const pictureCaption = event.target.nextElementSibling.querySelector(
-      ".elements__name"
-    ).textContent;
+    const pictureCaption = event.target.nextElementSibling.querySelector(".elements__name").textContent;
     popupZoomPicture.setAttribute("src", pictureSrc);
     popupZoomCaption.textContent = pictureCaption;
     popupToggle(popupZoom);

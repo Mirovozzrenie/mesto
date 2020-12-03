@@ -1,14 +1,13 @@
-function popupZoomSwitch(event) {
-    const pictureSrc = event.target.getAttribute("src");
-    const pictureCaption = event.target.nextElementSibling.querySelector(
-      ".elements__name"
-    ).textContent;
-    popupZoomPicture.setAttribute("src", pictureSrc);
-    popupZoomCaption.textContent = pictureCaption;
-    popupToggle(popupZoom);
-  }
+let detector = false;
+function removePopupListener (){
+  document.removeEventListener('keydown', popupCloseEsc);
+  detector = false;
+}
 
-
+function addPopupListener (){
+  document.addEventListener('keydown', popupCloseEsc);
+  detector = true;
+}
 function popupToggle(arg) {
     arg.classList.toggle("popup_active");
     if (detector === true) {
@@ -17,4 +16,4 @@ function popupToggle(arg) {
       addPopupListener()
     }
   }
-  export {popupZoomSwitch, popupToggle};
+  export {popupToggle, detector, addPopupListener, removePopupListener};
