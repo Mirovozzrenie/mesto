@@ -34,9 +34,6 @@ export default class Card {
   cardRemove(event) {
       event.target.closest(".elements__card").remove();
   }
-  // cardPicture(event) {
-  //   event.target.querySelector(".elements__picture").addEventListener("click", popupZoomSwitch);
-  // }
 
   popupZoomSwitch(event) {
     const pictureSrc = event.target.getAttribute("src");
