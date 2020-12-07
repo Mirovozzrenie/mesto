@@ -1,5 +1,18 @@
-const newPlaceForm = document.querySelector('.popup__new-card-picture');
-const newProfileInfo = document.querySelector('.popup__new-profile-info')
+const newPlaceForm = document.querySelector(".popup__new-card-picture");
+const newProfileInfo = document.querySelector(".popup__new-profile-info");
+const 
+
+class FormValidator {
+  constructor(someForm) {}
+  
+  function showError(input) {
+  const errorElement = document.querySelector(`#${input.id}-error`);
+  errorElement.textContent = input.validationMessage;
+  input.classList.add('popup__input-field_state_invalid');
+}
+}
+
+
 
 // function showError(input) {
 //   const errorElement = document.querySelector(`#${input.id}-error`);
@@ -22,7 +35,7 @@ const newProfileInfo = document.querySelector('.popup__new-profile-info')
 // }
 
 // function setEventListener(formElement, mainForm) {
-//   const buttonElement = mainForm.querySelector(".popup__save-button"); 
+//   const buttonElement = mainForm.querySelector(".popup__save-button");
 //   formElement.addEventListener("input", (event) => {
 //     checkInputValidity(formElement);
 //     toggleButtonState(formElement, buttonElement);
@@ -54,40 +67,9 @@ const newProfileInfo = document.querySelector('.popup__new-profile-info')
 // enableValidation(newProfileInfo);
 
 class FormValidator {
-  constructor(inputElement, formElement) {}
-  
-  _setEventListener(formElement, mainForm) {
-  const buttonElement = mainForm.querySelector(".popup__save-button"); 
-  formElement.addEventListener("input", (event) => {
-    _checkInputValidity(formElement);
-    _toggleButtonState(formElement, buttonElement);
-  });
-  _toggleButtonState(formElement, buttonElement);
-}
-  
-enableValidation() {
-    const formElements = Array.from(this.querySelectorAll(".popup__input-field"));
-  formElements.forEach((formElement) => {
-   formElement.addEventListener("submit", function (event) {
-  event.preventDefault();
-});
-    _setEventListener(formElement, mainForm);
-  })
-}
-  _checkInputValidity(input) {
-  if (input.validity.valid) {
-    hideError(input);
-  } else {
-    showError(input);
+  constructor(newPlaceForm, newProfileInfo) {
+    
   }
-  }
- _toggleButtonState(formElement, buttonElement) {
-  if (formElement.checkValidity()) {
-    buttonElement.classList.remove("popup__save-button_invalid");
-    buttonElement.disabled = false;
-  } else {
-    buttonElement.classList.add("popup__save-button_invalid");
-    buttonElement.disabled = true;
-  }
-}
+
+
 }
