@@ -1,6 +1,7 @@
-import {initialCards} from './data.js';
-import Card from './card.js';
-import {popupToggle} from './generalFunction.js';
+import { initialCards } from "./data.js";
+import Card from "./card.js";
+import { popupToggle } from "./generalFunction.js";
+import FormValidator from "./validation.js";
 
 //Основные кнопки профиля
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -29,21 +30,20 @@ const popupZoom = document.querySelector(".popup_zoom");
 const popupZoomCancel = document.querySelector(".popup__zoom-cancel");
 
 function bindHandlers() {
-  newCardForm.addEventListener("submit", event => {
+  newCardForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const item = {
       name: placeName.value,
-      link: pictureLink.value
+      link: pictureLink.value,
     };
     const card = new Card(item);
-   const newCard = card._generateCard();
+    const newCard = card._generateCard();
     elements.prepend(newCard);
     placeName.value = "";
     pictureLink.value = "";
     popupToggle(popupCardEditor);
   });
 }
-
 
 //отправка формы
 function formSubmitHandler(event) {
@@ -70,18 +70,18 @@ formElement.addEventListener("submit", formSubmitHandler);
 profileAddButton.addEventListener("click", function () {
   popupToggle(popupCardEditor);
 });
-popupCardEditorCancelIcon.addEventListener("click", function() {
+popupCardEditorCancelIcon.addEventListener("click", function () {
   popupToggle(popupCardEditor);
 });
-popupZoomCancel.addEventListener("click", function() {
+popupZoomCancel.addEventListener("click", function () {
   popupToggle(popupZoom);
 });
 
-document.querySelectorAll('.popup').forEach((popup) => {
-  popup.addEventListener('click', (event) => {
-    if (event.target.classList.contains('popup')) {
+document.querySelectorAll(".popup").forEach((popup) => {
+  popup.addEventListener("click", (event) => {
+    if (event.target.classList.contains("popup")) {
       popupToggle(event.target);
-    };
+    }
   });
 });
 
@@ -89,4 +89,4 @@ initialCards.forEach((item) => {
   const card = new Card(item);
   const newCard = card._generateCard();
   elements.append(newCard);
-})
+});
