@@ -1,7 +1,7 @@
 import { initialCards } from "./data.js";
 import Card from "./card.js";
 import { popupToggle } from "./generalFunction.js";
-import { FormValidator } from "./validation.js";
+import FormValidator from "./validation.js";
 
 //Основные кнопки профиля
 const profileEditButton = document.querySelector(".profile__edit-button");

@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(someForm) {}
 
   _showError(input) {
@@ -105,4 +105,5 @@ class FormValidatorForCard {
     });
   }
 }
-export { FormValidator };
+
+//export { FormValidator };
