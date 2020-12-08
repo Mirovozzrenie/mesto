@@ -1,6 +1,3 @@
-const newPlaceForm = document.querySelector(".popup__new-card-picture");
-const newProfileInfo = document.querySelector(".popup__new-profile-info");
-
 class FormValidator {
   constructor(someForm) {}
 
@@ -21,7 +18,7 @@ class FormValidator {
     } else {
       _showError(input);
     }
-  } 
+  }
 
   _eventSupervision(inputElement, mainForm) {
     const _buttonElement = mainForm.querySelector(".popup__save-button");
@@ -95,7 +92,7 @@ class FormValidatorForCard {
       buttonElement.disabled = true;
     }
   }
-Ђ [я  ]
+
   enableValidation(mainForm) {
     const formElements = Array.from(
       mainForm.querySelectorAll(".popup__input-field")
@@ -108,10 +105,4 @@ class FormValidatorForCard {
     });
   }
 }
- 
-
-
-newPlaceForm.forEach((item) => { 
-  const form = new FormValidator(item);
-  form.enableValidation();
-})
+export { FormValidator };

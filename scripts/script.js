@@ -1,12 +1,14 @@
 import { initialCards } from "./data.js";
 import Card from "./card.js";
 import { popupToggle } from "./generalFunction.js";
-import FormValidator from "./validation.js";
+import { FormValidator } from "./validation.js";
 
 //Основные кнопки профиля
 const profileEditButton = document.querySelector(".profile__edit-button");
 const popupCancelIcon = document.querySelector(".popup__cancel-profile");
 const profileAddButton = document.querySelector(".profile__add-button");
+const newPlaceForm = document.querySelector(".popup__new-card-picture");
+const newProfileInfo = document.querySelector(".popup__new-profile-info");
 
 //Основные кнопки добавления карточки
 const popupCardEditor = document.querySelector(".popup_cards-editor");
@@ -61,14 +63,17 @@ profileEditButton.addEventListener("click", function () {
   jobInput.value = profileUserStatus.textContent;
   popupToggle(popupProfileEditor);
 });
+
 popupCancelIcon.addEventListener("click", function () {
   popupToggle(popupProfileEditor);
 });
+
 formElement.addEventListener("submit", formSubmitHandler);
 
 //окно добавления карточек
 profileAddButton.addEventListener("click", function () {
   popupToggle(popupCardEditor);
+  validity(newPlaceForm);
 });
 popupCardEditorCancelIcon.addEventListener("click", function () {
   popupToggle(popupCardEditor);
@@ -90,3 +95,8 @@ initialCards.forEach((item) => {
   const newCard = card._generateCard();
   elements.append(newCard);
 });
+
+function validity(mainForm) {
+  let _validation = new FormValidator(mainForm);
+  _validation.enableValidation();
+}
