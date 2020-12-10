@@ -61,6 +61,7 @@ bindHandlers();
 profileEditButton.addEventListener("click", function () {
   nameInput.value = profileUserName.textContent;
   jobInput.value = profileUserStatus.textContent;
+  validity(newProfileInfo);
   popupToggle(popupProfileEditor);
 });
 
@@ -97,6 +98,8 @@ initialCards.forEach((item) => {
 });
 
 function validity(mainForm) {
-  let _validation = new FormValidator(mainForm);
-  _validation.enableValidation();
+  console.log(mainForm);
+  const valid = new FormValidator(mainForm);
+  console.log(valid);
+  valid.enableValidation();
 }

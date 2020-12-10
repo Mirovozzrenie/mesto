@@ -1,32 +1,39 @@
 export default class FormValidator {
-  constructor(someForm) {}
+  constructor(someForm) {
+    this.someForm = someForm;
+  }
 
   _showError(input) {
-    const errorElement = this.querySelector(`#${input.id}-error`);
+    console.log(input);
+    const errorElement = document.querySelector(`#${input.id}-error`);
+    console.log(errorElement);
     errorElement.textContent = input.validationMessage;
+    console.log(input.validationMessage);
+    console.log(input.textContent);
     input.classList.add("popup__input-field_state_invalid");
   }
   _hideError(input) {
-    const errorElement = this.querySelector(`#${input.id}-error`);
+    const errorElement = document.querySelector(`#${input.id}-error`);
     errorElement.textContent = "";
     input.classList.remove("popup__input-field_state_invalid");
   }
 
   _checkInputValidity(input) {
+    console.log(input);
     if (input.validity.valid) {
-      _hideError(input);
+      this._hideError(input);
     } else {
-      _showError(input);
+      this._showError(input);
     }
   }
 
   _eventSupervision(inputElement, mainForm) {
     const _buttonElement = mainForm.querySelector(".popup__save-button");
     inputElement.addEventListener("input", (event) => {
-      _checkInputValidity(inputElement);
-      _toggleButtonState(inputElement, _buttonElement);
+      this._checkInputValidity(inputElement);
+      this._toggleButtonState(inputElement, _buttonElement);
     });
-    _toggleButtonState(inputElement, _buttonElement);
+    this._toggleButtonState(inputElement, _buttonElement);
   }
 
   _toggleButtonState(inputElement, buttonElement) {
@@ -39,15 +46,16 @@ export default class FormValidator {
     }
   }
 
-  enableValidation(mainForm) {
-    const formElements = Array.from(
-      mainForm.querySelectorAll(".popup__input-field")
+  enableValidation() {
+    console.log(this.someForm);
+    this.formElements = Array.from(
+      this.someForm.querySelectorAll(".popup__input-field")
     );
-    formElements.forEach((inputElement) => {
+    this.formElements.forEach((inputElement) => {
       inputElement.addEventListener("submit", function (event) {
         event.preventDefault();
       });
-      _eventSupervision(inputElement, mainForm);
+      this._eventSupervision(inputElement, this.someForm);
     });
   }
 }
@@ -106,4 +114,4 @@ class FormValidatorForCard {
   }
 }
 
-//export { FormValidator };
+export { FormValidator };
