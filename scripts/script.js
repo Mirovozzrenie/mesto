@@ -24,7 +24,7 @@ const profileUserStatus = document.querySelector(".profile__user-status");
 const formElement = document.querySelector(".popup__edit-form");
 const nameInput = document.querySelector(".popup__user-name");
 const jobInput = document.querySelector(".popup__user-status");
-const elements = document.querySelector(".elements");
+const board = document.querySelector(".board");
 const placeName = document.querySelector(".popup__place-name");
 const pictureLink = document.querySelector(".popup__picture-link");
 const newCardForm = document.querySelector(".popup__new-card-picture");
@@ -40,7 +40,7 @@ function bindHandlers() {
     };
     const card = new Card(item);
     const newCard = card._generateCard();
-    elements.prepend(newCard);
+    board.prepend(newCard);
     placeName.value = "";
     pictureLink.value = "";
     popupToggle(popupCardEditor);
@@ -94,7 +94,7 @@ document.querySelectorAll(".popup").forEach((popup) => {
 initialCards.forEach((item) => {
   const card = new Card(item);
   const newCard = card._generateCard();
-  elements.append(newCard);
+  board.append(newCard);
 });
 
 function validity(mainForm) {

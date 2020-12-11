@@ -12,7 +12,7 @@ export default class Card {
 
   _getTemplate() {
     const cardElement = document
-      .querySelector(".elements__card-template")
+      .querySelector(".elements")
       .content.cloneNode(true);
     return cardElement;
   }
