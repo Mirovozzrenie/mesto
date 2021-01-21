@@ -1,55 +1,34 @@
-import { popupToggle } from "./generalFunction.js";
+ class Card {
+   constructor(data, cardTemplate, popupZoomSwitch) {
+     this._name = data.name;
+     this._link = data.link;
+     this._cardTemplate = cardTemplate;
+     this._popupZoomSwitch = popupZoomSwitch;
+   }
 
-const popupZoomPicture = document.querySelector(".popup__zoom-img");
-const popupZoomCaption = document.querySelector(".popup__zoom-caption");
-const popupZoom = document.querySelector(".popup_zoom");
+   getCard = (data) => {
+     const _card = this._cardTemplate.content.cloneNode(true);
+     _card.querySelector(".elements__name").innerHTML = this._name;
+     _card.querySelector(".elements__picture").setAttribute("src", this._link);
+     const _cardPicture = _card.querySelector(".elements__picture");
+     _cardPicture.addEventListener("click", this._popupZoomSwitch);
+     const _cardLike = _card.querySelector(".elements__like");
+     _cardLike.addEventListener("click", this._favoriteCard);
+     const _cardRemove = _card.querySelector(".elements__remove-btn");
+     _cardRemove.addEventListener("click",this._removeCard);
+     return _card;
+   }
 
-export default class Card {
-  constructor(data) {
-    this.name = data.name;
-    this.link = data.link;
-  }
+   _favoriteCard = (event) => {
+     event.target.classList.toggle("elements__like_condition_on")
+   };
 
-  _getTemplate() {
-    const cardElement = document
-      .querySelector(".elements")
-      .content.cloneNode(true);
-    return cardElement;
-  }
+   _removeCard = (event) => {
+     event.target.closest(".elements__card").remove()
+   };
+ }
 
-  _generateCard() {
-    this._element = this._getTemplate();
-    this._element.querySelector(".elements__name").innerHTML = this.name;
-    this._element
-      .querySelector(".elements__picture")
-      .setAttribute("src", this.link);
-    this._element
-      .querySelector(".elements__like")
-      .addEventListener("click", this.cardLike);
-    this._element
-      .querySelector(".elements__remove-btn")
-      .addEventListener("click", this.cardRemove);
-    this._element
-      .querySelector(".elements__picture")
-      .addEventListener("click", this.popupZoomSwitch);
-    return this._element;
-  }
 
-  cardLike(event) {
-    event.target.classList.toggle("elements__like_condition_on");
-  }
-
-  cardRemove(event) {
-    event.target.closest(".elements__card").remove();
-  }
-
-  popupZoomSwitch(event) {
-    const pictureSrc = event.target.getAttribute("src");
-    const pictureCaption = event.target.nextElementSibling.querySelector(
-      ".elements__name"
-    ).textContent;
-    popupZoomPicture.setAttribute("src", pictureSrc);
-    popupZoomCaption.textContent = pictureCaption;
-    popupToggle(popupZoom);
-  }
-}
+ export {
+   Card
+ };

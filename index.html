@@ -6,8 +6,9 @@
   <title>mesto</title>
   <link rel="stylesheet" href="./pages/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="./scripts/script.js" defer type="module"></script>
-  <!-- <script src="./scripts/validation.js" defer></script> -->
+
+<!--  <script src="./scripts/validation.js" defer></script>-->
+  <script type="module" src="./scripts/script.js" defer></script>
 </head>
 
 <body class="root">
@@ -30,7 +31,7 @@
       <button class="profile__add-button" type="button"></button>
     </section>
 
-    <section class="board"></section>
+    <section class="elements"></section>
 
   </main>
 
@@ -38,13 +39,13 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-<!--редактирование профиля-->
+  <!--редактирование профиля-->
   <div class="popup popup_profile-editor">
     <div class="popup__container">
       <button class="popup__cancel-icon popup__cancel-profile" type="button"></button>
       <form class="popup__edit-form popup__new-profile-info" name="profile-edit-form">
         <h2 class="popup__action-name">Редактировать профиль</h2>
-        <input class="popup__user-name popup__input-field" type="text" placeholder="Фамилия" required name="user-name"autocomplete="off" minlength="2" maxlength="40" id="user-name">
+        <input class="popup__user-name popup__input-field" type="text" placeholder="Фамилия" required name="user-name" autocomplete="off" minlength="2" maxlength="40" id="user-name">
         <span id="user-name-error" class="popup__error"></span>
         <input class="popup__user-status popup__input-field" type="text" placeholder="Статус" required name="user-status" autocomplete="off" minlength="2" maxlength="200" id="user-status">
         <span id="user-status-error" class="popup__error"></span>
@@ -52,9 +53,9 @@
       </form>
     </div>
   </div>
-  
-<!-- добавление карточки-->
-   <div class="popup popup_cards-editor">
+
+  <!-- добавление карточки-->
+  <div class="popup popup_cards-editor">
     <div class="popup__container">
       <button class="popup__cancel-icon popup__cancel-cards" type="button"></button>
       <form class="popup__edit-form popup__new-card-picture" name="card-edit-form">
@@ -67,25 +68,26 @@
       </form>
     </div>
   </div>
-      <!--  3-й popup -->
+  <!--  3-й popup -->
   <div class="popup popup_zoom">
-   <figure class="popup__zoom-container">
-    <button class="popup__cancel-icon popup__zoom-cancel"></button>
-      <img src="#" alt="#" class="popup__zoom-img">
+    <figure class="popup__zoom-container">
+      <button class="popup__cancel-icon popup__zoom-cancel"></button>
+      <img src="" alt="" class="popup__zoom-img">
       <figcaption class="popup__zoom-caption">
       </figcaption>
     </figure>
   </div>
-
-<template class="elements">
-  <div class="elements__card">
-        <button class="elements__remove-btn"></button>
-        <img src="#" alt="#" class="elements__picture">
-        <div class="elements__place-panel">
-          <h2 class="elements__name"></h2>
-          <button class="elements__like" type="button"></button>
-        </div>
-  </div>
-</template>
+  <!-- template -->
+  <template class="card__template">
+    <div class="elements__card">
+      <button class="elements__remove-btn"></button>
+      <img src="" alt="" class="elements__picture">
+      <div class="elements__place-panel">
+        <h2 class="elements__name"></h2>
+        <button class="elements__like" type="button"></button>
+      </div>
+    </div>
+  </template>
 </body>
+
 </html>
