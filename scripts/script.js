@@ -5,7 +5,10 @@ import {
 import {
   Card
 } from "./card.js";
-import { Validation, validationConfig } from "./validation.js"
+import {
+  Validation,
+  validationConfig
+} from "./validation.js"
 //Основные кнопки профиля
 const profileEditButton = document.querySelector(".profile__edit-button");
 const popupCancelIcon = document.querySelector(".popup__cancel-profile");
@@ -118,8 +121,8 @@ formElement.addEventListener("submit", formSubmitHandler);
 
 //окно добавления карточек
 profileAddButton.addEventListener("click", function () {
-    const validationFormAdd = new Validation(validationConfig, popupCardEditor).enableValidation();
-//  enableValidation(validationConfig);
+  const validationFormAdd = new Validation(validationConfig, popupCardEditor).enableValidation();
+  //  enableValidation(validationConfig);
   popupToggle(popupCardEditor);
 });
 popupCardEditorCancelIcon.addEventListener("click", function () {

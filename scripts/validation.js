@@ -60,11 +60,12 @@ class Validation {
 
   enableValidation() {
     const forms = this._addForm.querySelectorAll(this._config.formSelector);
-    forms.forEach(form => { this._setEventListener(form);
-    const submitButton = form.querySelector(this._config.submitButtonSelector);
-    this._setButtonState(submitButton, form.checkValidity());
-  });
-}
+    forms.forEach(form => {
+      this._setEventListener(form);
+      const submitButton = form.querySelector(this._config.submitButtonSelector);
+      this._setButtonState(submitButton, form.checkValidity());
+    });
+  }
 }
 export {
   Validation,

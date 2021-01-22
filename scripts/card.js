@@ -15,7 +15,7 @@
      const _cardLike = _card.querySelector(".elements__like");
      _cardLike.addEventListener("click", this._favoriteCard);
      const _cardRemove = _card.querySelector(".elements__remove-btn");
-     _cardRemove.addEventListener("click",this._removeCard);
+     _cardRemove.addEventListener("click", this._removeCard);
      return _card;
    }
 
