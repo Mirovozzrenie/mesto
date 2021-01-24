@@ -9,8 +9,8 @@
    getCard = (data) => {
      const _card = this._cardTemplate.content.cloneNode(true);
      _card.querySelector(".elements__name").innerHTML = this._name;
-     _card.querySelector(".elements__picture").setAttribute("src", this._link);
      const _cardPicture = _card.querySelector(".elements__picture");
+     _cardPicture.setAttribute("src", this._link);
      _cardPicture.addEventListener("click", this._popupZoomSwitch);
      const _cardLike = _card.querySelector(".elements__like");
      _cardLike.addEventListener("click", this._favoriteCard);
