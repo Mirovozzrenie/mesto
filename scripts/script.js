@@ -101,6 +101,7 @@ function submitFormHandler(event) {
   event.preventDefault();
   profileUserName.textContent = nameInput.value;
   profileUserStatus.textContent = jobInput.value;
+
   togglePopup(popupProfileEditor);
 }
 
@@ -124,6 +125,8 @@ bindHandlers();
 profileEditButton.addEventListener("click", function () {
   nameInput.value = profileUserName.textContent;
   jobInput.value = profileUserStatus.textContent;
+  console.log(profileAddForm.checkValidity());
+  validationProfile.setButtonState(profileAddForm.checkValidity());
   togglePopup(popupProfileEditor);
 
 });

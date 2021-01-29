@@ -15,13 +15,12 @@ class Validation {
 
   cleanErrors() {
    const errorSpan = this._addForm.querySelectorAll('.popup__error');
-   console.log(errorSpan)
+//   console.log(errorSpan)
    errorSpan.forEach(span => {
      span.textContent = '';
    });
     const errorInput = this._addForm.querySelectorAll(this._config.inputSelector);
     errorInput.forEach(input => {
-      input.value = '';
       input.classList.remove(this._config.inputInvalidClass);
     })
   }  
@@ -50,7 +49,7 @@ class Validation {
     }
   }
 
-  _setButtonState(isActive) {
+  setButtonState(isActive) {
     if (isActive) {
       this._submitButton.classList.remove(this._config.buttonInvalidClass);
       this._submitButton.disabled = false;
@@ -67,7 +66,7 @@ class Validation {
     inputList.forEach(input => {
       input.addEventListener("input", (event) => {
         this._checkInputValidity(input, this._config);
-        this._setButtonState(this._addForm.checkValidity());
+        this.setButtonState(this._addForm.checkValidity());
       });
 
     })
@@ -80,10 +79,10 @@ class Validation {
     this._setEventListener();
     this._addForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      this._setButtonState();
+      this.setButtonState();
     })
     /*const submitButton = form.querySelector(this._config.submitButtonSelector);*/
-    this._setButtonState();
+    this.setButtonState();
     //    });
   }
 }
