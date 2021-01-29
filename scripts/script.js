@@ -14,8 +14,8 @@ const profileEditButton = document.querySelector(".profile__edit-button");
 const popupCancelIcon = document.querySelector(".popup__cancel-profile");
 const profileAddButton = document.querySelector(".profile__add-button");
 //
-const profileAddForm = document.querySelector(".popup__new-card-picture");
-const cardAddForm = document.querySelector(".popup__new-profile-info");
+const profileAddForm = document.querySelector(".popup__new-profile-info");
+const cardAddForm = document.querySelector(".popup__new-card-picture" );
 //Основные кнопки добавления карточки
 const popupCardEditor = document.querySelector(".popup_cards-editor");
 const popupCardEditorCancelIcon = document.querySelector(".popup__cancel-cards");
@@ -91,6 +91,7 @@ function togglePopup(arg) {
   arg.classList.toggle("popup_active");
   if (detector === true) {
     removePopupListener();
+    validationProfile.cleanErrors();
   } else {
     addPopupListener();
   }
@@ -102,6 +103,20 @@ function submitFormHandler(event) {
   profileUserStatus.textContent = jobInput.value;
   togglePopup(popupProfileEditor);
 }
+
+const validationProfile = new Validation(validationConfig, profileAddForm);
+const validationCardEditor = new Validation(validationConfig, cardAddForm);
+
+
+function renderValidation() {
+//  const formForValidation = document.querySelectorAll('.popup__edit-form');
+//  formForValidation.forEach((element) => new Validation(validationConfig, element).enableValidation());
+
+  validationProfile.enableValidation();
+  validationCardEditor.enableValidation();
+}
+
+renderValidation();
 renderElements();
 bindHandlers();
 
@@ -109,7 +124,6 @@ bindHandlers();
 profileEditButton.addEventListener("click", function () {
   nameInput.value = profileUserName.textContent;
   jobInput.value = profileUserStatus.textContent;
-  const validationFormAdd = new Validation(validationConfig, popupProfileEditor).enableValidation();
   togglePopup(popupProfileEditor);
 
 });
@@ -121,7 +135,6 @@ formElement.addEventListener("submit", submitFormHandler);
 
 //окно добавления карточек
 profileAddButton.addEventListener("click", function () {
-  const validationFormAdd = new Validation(validationConfig, popupCardEditor).enableValidation();
   togglePopup(popupCardEditor);
 });
 
