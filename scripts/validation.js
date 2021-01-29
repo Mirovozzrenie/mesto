@@ -14,17 +14,16 @@ class Validation {
   }
 
   cleanErrors() {
-   const errorSpan = this._addForm.querySelectorAll('.popup__error');
-//   console.log(errorSpan)
-   errorSpan.forEach(span => {
-     span.textContent = '';
-   });
+    const errorSpan = this._addForm.querySelectorAll('.popup__error');
+    errorSpan.forEach(span => {
+      span.textContent = '';
+    });
     const errorInput = this._addForm.querySelectorAll(this._config.inputSelector);
     errorInput.forEach(input => {
       input.classList.remove(this._config.inputInvalidClass);
     })
-  }  
-  
+  }
+
   _showError(input) {
     const _error = this._addForm.querySelector(
       `#${input.id}-error`
@@ -61,8 +60,6 @@ class Validation {
 
   _setEventListener() {
     const inputList = this._addForm.querySelectorAll(this._config.inputSelector);
-    /*const submitButton = form.querySelector(this._config.submitButtonSelector);*/
-
     inputList.forEach(input => {
       input.addEventListener("input", (event) => {
         this._checkInputValidity(input, this._config);
@@ -73,17 +70,13 @@ class Validation {
   }
 
   enableValidation() {
-    /*const forms = this._addForm.querySelectorAll(this._config.formSelector);
-    forms.forEach(form => {*/
-//    console.log(this);
     this._setEventListener();
     this._addForm.addEventListener('submit', (event) => {
       event.preventDefault();
       this.setButtonState();
     })
-    /*const submitButton = form.querySelector(this._config.submitButtonSelector);*/
     this.setButtonState();
-    //    });
+
   }
 }
 export {

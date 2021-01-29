@@ -35,15 +35,18 @@ const popupZoom = document.querySelector(".popup_zoom");
 const popupZoomCancel = document.querySelector(".popup__zoom-cancel");
 const popupZoomPicture = document.querySelector(".popup__zoom-img");
 const popupZoomCaption = document.querySelector(".popup__zoom-caption");
+let detector = false;
 //загатовка карточки для отрисовки
 const cardTemplate = document.querySelector(".card__template");
+//создание экземпляров класса валидации 
+const validationProfile = new Validation(validationConfig, profileAddForm);
+const validationCardEditor = new Validation(validationConfig, cardAddForm);
 //функция добавления карточек
 const renderElements = () => {
   const items = initialCards.map((element) => new Card(element, cardTemplate, zoomPopupSwitch).getCard());
   elements.append(...items);
 };
 
-let detector = false;
 
 function removePopupListener(e) {
   document.removeEventListener("keydown", closePopupEsc);
@@ -101,18 +104,10 @@ function submitFormHandler(event) {
   event.preventDefault();
   profileUserName.textContent = nameInput.value;
   profileUserStatus.textContent = jobInput.value;
-
   togglePopup(popupProfileEditor);
 }
 
-const validationProfile = new Validation(validationConfig, profileAddForm);
-const validationCardEditor = new Validation(validationConfig, cardAddForm);
-
-
 function renderValidation() {
-//  const formForValidation = document.querySelectorAll('.popup__edit-form');
-//  formForValidation.forEach((element) => new Validation(validationConfig, element).enableValidation());
-
   validationProfile.enableValidation();
   validationCardEditor.enableValidation();
 }
