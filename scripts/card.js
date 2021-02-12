@@ -1,5 +1,5 @@
  class Card {
-   constructor(data, cardTemplate, popupZoomSwitch) {
+   constructor({data, popupZoomSwitch}, cardTemplate) {
      this._name = data.name;
      this._link = data.link;
      this._cardTemplate = cardTemplate;
