@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <title>mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
+<!--  <link rel="stylesheet" href="./pages/index.css">-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--  <script src="./scripts/validation.js" defer></script>-->
-  <script type="module" src="./scripts/script.js" defer></script>
+<!--  <script type="module" src="./scripts/script.js" defer></script>-->
 </head>
 
 <body class="root">
 
   <header class="header">
-    <img src="./images/header/header__logo.svg" alt="Место: Россия">
+    <img src=<%=require('./images/header/header__logo.svg')%> alt="Место: Россия">
   </header>
 
   <main class="main">
 
     <section class="profile">
-      <img src="./images/profile/profile__avatar.jpg" alt="Аватар пользователя" class="profile__avatar">
+      <img src=<%=require('./images/profile/profile__avatar.jpg')%> alt="Аватар пользователя" class="profile__avatar">
       <div class="profile__info">
         <div class="profile__title">
           <h1 class="profile__user-name">Жак-Ив Кусто</h1>
@@ -44,9 +44,9 @@
       <button class="popup__cancel-icon popup__cancel-profile" type="button"></button>
       <form class="popup__edit-form popup__new-profile-info" name="profile-edit-form">
         <h2 class="popup__action-name">Редактировать профиль</h2>
-        <input class="popup__user-name popup__input-field" type="text" placeholder="Фамилия" required name="user-name" autocomplete="off" minlength="2" maxlength="40" id="user-name">
+        <input class="popup__user-name popup__input-field" type="text" placeholder="Фамилия" required name="name" autocomplete="off" minlength="2" maxlength="40" id="user-name">
         <span id="user-name-error" class="popup__error"></span>
-        <input class="popup__user-status popup__input-field" type="text" placeholder="Статус" required name="user-status" autocomplete="off" minlength="2" maxlength="200" id="user-status">
+        <input class="popup__user-status popup__input-field" type="text" placeholder="Статус" required name="status" autocomplete="off" minlength="2" maxlength="200" id="user-status">
         <span id="user-status-error" class="popup__error"></span>
         <button class="popup__save-button popup__save-profile" type="submit">Сохранить</button>
       </form>
@@ -59,9 +59,9 @@
       <button class="popup__cancel-icon popup__cancel-cards" type="button"></button>
       <form class="popup__edit-form popup__new-card-picture" name="card-edit-form">
         <h2 class="popup__action-name">Новое место</h2>
-        <input class="popup__place-name popup__input-field" type="text" placeholder="Название" required name="place-name" autocomplete="off" minlength="2" maxlength="30" id="name-card">
+        <input class="popup__place-name popup__input-field" type="text" placeholder="Название" required name="name" autocomplete="off" minlength="2" maxlength="30" id="name-card">
         <span id="name-card-error" class="popup__error"></span>
-        <input class="popup__picture-link popup__input-field" type="url" placeholder="Ссылка на картинку" required name="picture-link" autocomplete="off" id="link-place">
+        <input class="popup__picture-link popup__input-field" type="url" placeholder="Ссылка на картинку" required name="link" autocomplete="off" id="link-place">
         <span id="link-place-error" class="popup__error"></span>
         <button class="popup__save-button popup__save-cards" type="submit">Сохранить</button>
       </form>
