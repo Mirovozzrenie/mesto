@@ -1,4 +1,5 @@
 //основной массив карточек
+import './../pages/index.css';
 import { initialCards } from "./data.js";
 import { Card } from "./Card.js";
 import { Validation, validationConfig } from "./validation.js";
@@ -77,10 +78,9 @@ const cardPopup = new PopupWithForm({
 cardPopup.setEventListeners();
 
 function bindHandlers(data) {
-  console.log(4);
-  console.log(5);
+
   event.preventDefault();
-  console.log(data);
+
   const item = new Card(
     {
       data: data,
@@ -89,7 +89,7 @@ function bindHandlers(data) {
     cardTemplate
   ).getCard();
   placeList.setItem(item);
-  console.log("форма должна закрыться");
+
   cardPopup.close();
 }
 
@@ -141,7 +141,6 @@ renderValidation();
 profileEditButton.addEventListener("click", function() {
   let data = [];
   data = userInfo.getUserInfo();
-  console.log(data.name);
   nameInput.value = data.name.textContent;
   jobInput.value = data.status.textContent;
 

@@ -6,12 +6,12 @@ class Popup {
   }
 
   open() {
-    console.log("открыли");
+
     this._popup.classList.add("popup_active");
     document.addEventListener("keydown", this._handleEscClose);
   }
   close() {
-    console.log("закрыли");
+
     this._popup.classList.remove("popup_active");
     document.removeEventListener("keydown", this._handleEscClose);
   }
@@ -24,11 +24,11 @@ class Popup {
   setEventListeners() {
     this._popup.addEventListener("click", event => {
       if (event.target.classList.contains("popup_active")) {
-        console.log(2);
+
         this.close();
       }
       if (event.target.classList.contains("popup__cancel-icon")) {
-        console.log(1);
+
         this.close();
       }
     });

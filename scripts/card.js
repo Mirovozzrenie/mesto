@@ -6,7 +6,7 @@ class Card {
     this._popupZoomSwitch = popupZoomSwitch;
   }
 
-  getCard = data => {
+  getCard = (data) => {
     const _card = this._cardTemplate.content.cloneNode(true);
     _card.querySelector(".elements__name").innerHTML = this._name;
     const _cardPicture = _card.querySelector(".elements__picture");

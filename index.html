@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <title>mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
+<!--  <link rel="stylesheet" href="./pages/index.css">-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--  <script src="./scripts/validation.js" defer></script>-->
-  <script type="module" src="./scripts/script.js" defer></script>
+<!--  <script type="module" src="./scripts/script.js" defer></script>-->
 </head>
 
 <body class="root">
 
   <header class="header">
-    <img src="./images/header/header__logo.svg" alt="Место: Россия">
+    <img src=<%=require('./images/header/header__logo.svg')%> alt="Место: Россия">
   </header>
 
   <main class="main">
 
     <section class="profile">
-      <img src="./images/profile/profile__avatar.jpg" alt="Аватар пользователя" class="profile__avatar">
+      <img src=<%=require('./images/profile/profile__avatar.jpg')%> alt="Аватар пользователя" class="profile__avatar">
       <div class="profile__info">
         <div class="profile__title">
           <h1 class="profile__user-name">Жак-Ив Кусто</h1>

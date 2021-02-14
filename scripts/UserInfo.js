@@ -8,9 +8,7 @@ class UserInfo {
   updateUserInfo() {
     this._userName.textContent = this._name;
     this._userStatus.textContent = this._status;
-    console.log(this._userName.textContent);
-    console.log(this._userName);
-    console.log(this._userName.textContent);
+
   }
   setUserInfo(newName, newStatus) {
     this._name = newName;
