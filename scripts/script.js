@@ -1,7 +1,7 @@
 //основной массив карточек
 import './../pages/index.css';
 import { initialCards } from "./data.js";
-import { Card } from "./Card.js";
+import { Card } from "./card.js";
 import { Validation, validationConfig } from "./validation.js";
 import { Section } from "./Section.js";
 //import {Popup} from './Popup.js';
