@@ -1,3 +1,5 @@
+import {ESCbutton} from './script.js';
+
 class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
@@ -16,8 +18,8 @@ class Popup {
     document.removeEventListener("keydown", this._handleEscClose);
   }
 
-  _handleEscClose() {
-    if (event.key === "Escape") {
+  _handleEscClose(event) {
+    if (event.code === ESCbutton) {
       this.close();
     }
   }

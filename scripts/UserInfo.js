@@ -2,8 +2,8 @@ class UserInfo {
   constructor(userName, userStatus) {
     this._userName = userName;
     this._userStatus = userStatus;
-    this._name = "";
-    this._status = "";
+    this._name = this._userName.textContent;
+    this._status = this._userStatus.textContent;
   }
   updateUserInfo() {
     this._userName.textContent = this._name;
@@ -16,10 +16,11 @@ class UserInfo {
   }
   getUserInfo() {
     return {
-      name: this._userName,
-      status: this._userStatus
+      name: this._name,
+      status: this._status
     };
   }
 }
 
 export { UserInfo };
+

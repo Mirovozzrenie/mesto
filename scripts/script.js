@@ -1,7 +1,7 @@
 //основной массив карточек
 import './../pages/index.css';
 import { initialCards } from "./data.js";
-import { Card } from "./Card.js";
+import { Card } from "./card.js";
 import { Validation, validationConfig } from "./validation.js";
 import { Section } from "./Section.js";
 //import {Popup} from './Popup.js';
@@ -9,6 +9,7 @@ import { PopupWithImage } from "./PopupWithImage.js";
 import { PopupWithForm } from "./PopupWithForm.js";
 import { UserInfo } from "./UserInfo.js";
 //Основные кнопки профиля
+const ESCbutton = "Escape"; 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const popupCancelIcon = document.querySelector(".popup__cancel-profile");
 const profileAddButton = document.querySelector(".profile__add-button");
@@ -79,7 +80,6 @@ cardPopup.setEventListeners();
 
 function bindHandlers(data) {
 
-  event.preventDefault();
 
   const item = new Card(
     {
@@ -103,7 +103,6 @@ const newProfilePopup = new PopupWithForm({
 });
 newProfilePopup.setEventListeners();
 const userInfo = new UserInfo(profileUserName, profileUserStatus);
-
 function submitFormHandler(data) {
   event.preventDefault();
   userInfo.setUserInfo(nameInput.value, jobInput.value);
@@ -139,10 +138,11 @@ placeList.renderItems();
 renderValidation();
 
 profileEditButton.addEventListener("click", function() {
+//  userInfo.updateUserInfo();
   let data = [];
   data = userInfo.getUserInfo();
-  nameInput.value = data.name.textContent;
-  jobInput.value = data.status.textContent;
+  nameInput.value = data.name;
+  jobInput.value = data.status;
 
   validationProfile.setButtonState(profileAddForm.checkValidity());
   newProfilePopup.open();
@@ -152,3 +152,5 @@ profileEditButton.addEventListener("click", function() {
 profileAddButton.addEventListener("click", event => {
   cardPopup.open();
 });
+
+export {ESCbutton}
