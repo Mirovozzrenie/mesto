@@ -4,43 +4,35 @@ import { initialCards } from "./data.js";
 import { Card } from "./card.js";
 import { Validation, validationConfig } from "./validation.js";
 import { Section } from "./Section.js";
-//import {Popup} from './Popup.js';
+import {Popup} from './Popup.js';
 import { PopupWithImage } from "./PopupWithImage.js";
 import { PopupWithForm } from "./PopupWithForm.js";
 import { UserInfo } from "./UserInfo.js";
-//Основные кнопки профиля
-const ESCbutton = "Escape"; 
-const profileEditButton = document.querySelector(".profile__edit-button");
-const popupCancelIcon = document.querySelector(".popup__cancel-profile");
-const profileAddButton = document.querySelector(".profile__add-button");
-//
-const profileAddForm = document.querySelector(".popup__new-profile-info");
-const cardAddForm = document.querySelector(".popup__new-card-picture");
-//Основные кнопки добавления карточки
-const popupCardEditor = document.querySelector(".popup_cards-editor");
-const popupCardEditorCancelIcon = document.querySelector(
-  ".popup__cancel-cards"
-);
-const popupCardEditorSubmit = document.querySelector(".popup__save-cards");
-//найдем в DOM осн элементы
-const popupProfileEditor = document.querySelector(".popup_profile-editor");
-const profileUserName = document.querySelector(".profile__user-name");
-const profileUserStatus = document.querySelector(".profile__user-status");
-const formElement = document.querySelector(".popup__edit-form");
-const nameInput = document.querySelector(".popup__user-name");
-const jobInput = document.querySelector(".popup__user-status");
-const placeName = document.querySelector(".popup__place-name");
-const pictureLink = document.querySelector(".popup__picture-link");
-const newCardForm = document.querySelector(".popup__new-card-picture");
-const popupZoom = document.querySelector(".popup_zoom");
-const popupZoomCancel = document.querySelector(".popup__zoom-cancel");
-let detector = false;
-//загатовка карточки для отрисовки
-const cardTemplate = document.querySelector(".card__template");
-//создание экземпляров класса валидации
+import {profileEditButton}  from './const.js'
+import {popupCancelIcon} from './const.js'
+import {profileAddButton} from './const.js'
+import {profileAddForm} from './const.js'
+import {cardAddForm} from './const.js'
+import {popupCardEditor} from './const.js'
+import {popupCardEditorCancelIcon} from './const.js'
+import {popupCardEditorSubmit} from './const.js'
+import {popupProfileEditor} from './const.js'
+import {profileUserName} from './const.js'
+import {profileUserStatus} from './const.js'
+import {formElement} from './const.js'
+import {nameInput} from './const.js'
+import {jobInput} from './const.js'
+import {placeName} from './const.js'
+import {pictureLink} from './const.js'
+import {newCardForm} from './const.js'
+import {popupZoom} from './const.js'
+import {popupZoomCancel} from './const.js'
+import {cardTemplate} from './const.js'
+
 const validationProfile = new Validation(validationConfig, profileAddForm);
 const validationCardEditor = new Validation(validationConfig, cardAddForm);
-//функция добавления карточек
+let detector = false;
+
 
 function removePopupListener(e) {
   document.removeEventListener("keydown", closePopupEsc);
@@ -104,7 +96,6 @@ const newProfilePopup = new PopupWithForm({
 newProfilePopup.setEventListeners();
 const userInfo = new UserInfo(profileUserName, profileUserStatus);
 function submitFormHandler(data) {
-  event.preventDefault();
   userInfo.setUserInfo(nameInput.value, jobInput.value);
   userInfo.updateUserInfo();
   newProfilePopup.close();
@@ -152,5 +143,3 @@ profileEditButton.addEventListener("click", function() {
 profileAddButton.addEventListener("click", event => {
   cardPopup.open();
 });
-
-export {ESCbutton}

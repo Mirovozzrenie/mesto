@@ -1,4 +1,4 @@
-import {ESCbutton} from './script.js';
+import {ESCbutton} from './const.js';
 
 class Popup {
   constructor(popupSelector) {
