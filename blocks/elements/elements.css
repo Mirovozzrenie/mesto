@@ -4,6 +4,9 @@
 @import url('./__like/elements__like.css');
 @import url('./__name/elements__name.css');
 @import url('./__remove-btn/elements__remove-btn.css');
+@import url('./__like-container/elements__like-conteiner.css');
+@import url('./__like-counter/elements__like-counter.css');
+@import url('./__remove-btn/_condition/elements__remove-btn_condition_disabled.css');
 .elements {
   display: grid;
   grid-template-columns: repeat(3, 282px);

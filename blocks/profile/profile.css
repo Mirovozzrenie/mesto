@@ -5,6 +5,9 @@
 @import url('./__user-name/profile__user-name.css');
 @import url('./__user-status/profile__user-status.css');
 @import url('./__title/profile__title.css');
+@import url('./__avatar-btn/profile__avatar-btn.css');
+@import url('./__avatar-container/profile__avatar-container.css');
+
 .profile {
   display: flex;
   align-items: center;

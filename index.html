@@ -20,7 +20,9 @@
   <main class="main">
 
     <section class="profile">
+      <div class="profile__avatar-container">
       <img src=<%=require('./images/profile/profile__avatar.jpg')%> alt="Аватар пользователя" class="profile__avatar">
+      <button type="button" class="profile__avatar-btn"></button></div>
       <div class="profile__info">
         <div class="profile__title">
           <h1 class="profile__user-name">Жак-Ив Кусто</h1>
@@ -30,7 +32,6 @@
       </div>
       <button class="profile__add-button" type="button"></button>
     </section>
-
     <section class="elements"></section>
 
   </main>
@@ -77,6 +78,31 @@
       </figcaption>
     </figure>
   </div>
+<!--  4-й popup -->
+ <div class="popup popup_del">
+   <div class="popup__container">
+      <button class="popup__cancel-icon popup__cancel-remove" type="button"></button>
+      <form class="popup__edit-form popup__del-form" name="card-del">
+        <h2 class="popup__action-name">Вы уверены?</h2>
+        <button class="popup__save-button popup__save-cards" type="submit">Да</button>
+      </form>
+   </div>
+ </div>
+<!-- 5-й popup -->
+  
+   <div class="popup popup_change-avatar">
+    <div class="popup__container">
+      <button class="popup__cancel-icon popup__cancel-avatar" type="button"></button>
+      <form class="popup__edit-form popup__new-avatar" name="popup-avatar">
+        <h2 class="popup__action-name">Обновить аватар</h2>
+        <input class="popup__avatar-link popup__input-field" type="url" placeholder="Ссылка на картинку" required name="avatar" autocomplete="off" id="link-avatar">
+        <span id="link-avatar-error" class="popup__error"></span>
+        <button class="popup__save-button popup__save-profile" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+ 
+ 
   <!-- template -->
   <template class="card__template">
     <div class="elements__card">
@@ -84,7 +110,9 @@
       <img src="#" alt="#" class="elements__picture">
       <div class="elements__place-panel">
         <h2 class="elements__name"></h2>
-        <button class="elements__like" type="button"></button>
+        <div class="elements__like-conteiner"><button class="elements__like" type="button"></button>
+        <p class="elements__like-counter">0</p>
+</div>
       </div>
     </div>
   </template>

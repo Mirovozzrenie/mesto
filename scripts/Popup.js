@@ -5,6 +5,7 @@ class Popup {
     this._popup = document.querySelector(popupSelector);
     this._cancelIcon = this._popup.querySelector(".popup__cancel-icon");
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._submitButton = this._popup.querySelector('.popup__save-button');
   }
 
   open() {
