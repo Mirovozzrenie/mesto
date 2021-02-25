@@ -1,12 +1,10 @@
-import { profileUserName } from './const.js';
-
 class UserInfo {
-  constructor(name, about, avatar) {
+  constructor({name, about, avatar}) {
     this._userName = name;
     this._userStatus = about;
     this._name = this._userName.textContent;
     this._status = this._userStatus.textContent;
-    this.currentUser = profileUserName;
+    this.currentUser = name;
     this._avatar = avatar;
   }
   updateUserInfo() {

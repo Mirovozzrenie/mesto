@@ -1,5 +1,3 @@
-import {ESCbutton} from './const.js';
-
 class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
@@ -9,7 +7,6 @@ class Popup {
   }
 
   open() {
-
     this._popup.classList.add("popup_active");
     document.addEventListener("keydown", this._handleEscClose);
   }
@@ -20,7 +17,7 @@ class Popup {
   }
 
   _handleEscClose(event) {
-    if (event.code === ESCbutton) {
+    if (event.code === "Escape") {
       this.close();
     }
   }

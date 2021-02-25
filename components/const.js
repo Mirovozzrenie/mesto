@@ -1,4 +1,3 @@
-const ESCbutton = "Escape"; 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const popupCancelIcon = document.querySelector(".popup__cancel-profile");
 const profileAddButton = document.querySelector(".profile__add-button");
@@ -24,4 +23,6 @@ const profileAvatar = document.querySelector('.profile__avatar');
 const profileAvatarBtn = document.querySelector('.profile__avatar-btn');
 const profileAvatarForm = document.querySelector('.popup__new-avatar');
 const avatarLinkInput = document.querySelector('.popup__avatar-link');
-export {ESCbutton, profileEditButton, popupCancelIcon, profileAddButton, profileAddForm, cardAddForm, popupCardEditor, popupCardEditorCancelIcon, popupProfileEditor, profileUserName, profileUserStatus, formElement, nameInput, jobInput, placeName, pictureLink, newCardForm, popupZoom, popupZoomCancel, cardTemplate, profileAvatar, popupDelCard, profileAvatarBtn, profileAvatarForm, avatarLinkInput} 
+
+
+export {profileEditButton, popupCancelIcon, profileAddButton, profileAddForm, cardAddForm, popupCardEditor, popupCardEditorCancelIcon, popupProfileEditor, profileUserName, profileUserStatus, formElement, nameInput, jobInput, placeName, pictureLink, newCardForm, popupZoom, popupZoomCancel, cardTemplate, profileAvatar, popupDelCard, profileAvatarBtn, profileAvatarForm, avatarLinkInput} 
