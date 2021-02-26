@@ -6,7 +6,7 @@ const validationConfig = {
   inputInvalidClass: "popup__input-field_state_invalid"
 };
 
-class Validation {
+class FormValidator {
   constructor(config, addForm) {
     this._config = config;
     this._addForm = addForm;
@@ -79,4 +79,4 @@ class Validation {
     this.setButtonState();
   }
 }
-export { Validation, validationConfig };
+export { FormValidator, validationConfig };

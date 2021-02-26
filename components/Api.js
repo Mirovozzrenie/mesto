@@ -1,10 +1,4 @@
-import {
-  nameInput,
-  jobInput,
-  placeName,
-  pictureLink,
-  avatarLinkInput
-} from "./const.js";
+
 
 class Api {
   constructor({ url, headers, groupId }) {
@@ -16,12 +10,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this._url}/v1/${this._groupId}/cards`, {
       headers: this._headers
-    }).then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка на сервере ${res.status}`);
-    });
+    }).then(this._check);
   }
 
   getUserServerInfo() {
@@ -30,24 +19,24 @@ class Api {
     }).then(this._check);
   }
 
-  setUserServerInfo() {
+  setUserServerInfo(data) {
     return fetch(`${this._url}/v1/${this._groupId}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: nameInput.value,
-        about: jobInput.value
+        name: data.name,
+        about: data.status
       })
     }).then(this._check);
   }
 
-  addNewCard() {
+  addNewCard(data) {
     return fetch(`${this._url}/v1/${this._groupId}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: placeName.value,
-        link: pictureLink.value
+        name: data.name,
+        link: data.link
       })
     }).then(this._check);
   }
@@ -73,12 +62,12 @@ class Api {
     }).then(this._check);
   }
 
-  patchUserAvatar() {
+  patchUserAvatar(data) {
     return fetch(`${this._url}/v1/${this._groupId}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-      avatar: avatarLinkInput.value
+      avatar: data.avatar
       })
     }).then(this._check);
   }

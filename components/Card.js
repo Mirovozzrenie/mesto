@@ -16,23 +16,24 @@ class Card {
     this._likes = data.likes;
     this._ownerId = data.owner._id;
     this._userId = profileUserName._id;
-    this._cardId = data._id;
+    this.cardId = data._id;
     this._handleLikeCard = handleLikeCard;
     this._removeCardFromList = removeCardFromList;
+  
   }
 
   getCard = data => {
     this._card = this._cardTemplate.content.children[0].cloneNode(true);
-    this._card.querySelector(".elements__name").innerHTML = this._name;
+    this._card.querySelector(".elements__name").textContent = this._name;
     const _cardPicture = this._card.querySelector(".elements__picture");
     _cardPicture.setAttribute("src", this._link);
     _cardPicture.addEventListener("click", this._popupZoomSwitch);
     this._cardLike = this._card.querySelector(".elements__like");
     this._cardLike.addEventListener("click", this.favoriteCard);
     this._cardRemove = this._card.querySelector(".elements__remove-btn");
-    this._cardRemove.addEventListener("click", (event) => {
+    this._cardRemove.addEventListener("click", event => {
       this.pin = event.target.closest(".elements__card");
-      this._handleDelete(this.pin, this._cardId);
+      this._handleDelete(this.pin, this.cardId);
     });
     this._cardLikes = this._card.querySelector(".elements__like-counter");
     this._cardLikes.textContent = this._likes.length;

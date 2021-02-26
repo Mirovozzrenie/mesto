@@ -6,6 +6,8 @@ class PopupWithForm extends Popup {
     super(popupSelector);
     this._formSubmit = formSubmit;
     this._form = this._popup.querySelector(".popup__edit-form");
+        this._submitButton = this._popup.querySelector('.popup__save-button');
+
   }
 
   _getInputValue() {
